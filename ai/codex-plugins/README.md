@@ -5,7 +5,7 @@ A marketplace of OpenAI Codex CLI plugins for Oracle AI Data Platform (AIDP).
 ## Marketplace
 
 - **Name:** `oracle-aidp-codex`
-- **Manifest:** [`.agents/plugins/marketplace.json`](./.agents/plugins/marketplace.json)
+- **Remote manifest:** [`.agents/plugins/marketplace.json`](../../.agents/plugins/marketplace.json)
 
 ## Plugins
 
@@ -23,6 +23,7 @@ Register the marketplace:
 ```bash
 codex plugin marketplace add oracle-samples/oracle-aidp-samples \
     --ref main \
+    --sparse .agents \
     --sparse ai/codex-plugins
 ```
 
@@ -60,15 +61,16 @@ codex plugin add ask-aidp@oracle-aidp-codex
 ## Layout
 
 ```text
-ai/codex-plugins/
+oracle-aidp-samples/
 |-- .agents/plugins/marketplace.json
-|-- README.md
-|-- TESTING.md
-`-- plugins/
-    |-- oracle-ai-data-platform-workbench-databricks-migrator/
-    |-- oracle-ai-data-platform-workbench-engineer-agent/
-    |-- oracle-ai-data-platform-workbench-spark-connectors/
-    `-- ask-aidp/
+`-- ai/codex-plugins/
+    |-- README.md
+    |-- TESTING.md
+    `-- plugins/
+        |-- oracle-ai-data-platform-workbench-databricks-migrator/
+        |-- oracle-ai-data-platform-workbench-engineer-agent/
+        |-- oracle-ai-data-platform-workbench-spark-connectors/
+        `-- ask-aidp/
 ```
 
 Each plugin has its own `.codex-plugin/plugin.json`, README, license/privacy files, skills, and references or helper files.

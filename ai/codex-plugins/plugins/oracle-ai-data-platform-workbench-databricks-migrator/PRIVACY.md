@@ -45,7 +45,7 @@ There is no party between you and your infrastructure. The plugin author has no 
 
 ## Marketplace install / update
 
-When you run `codex plugin marketplace add oracle-samples/oracle-aidp-samples --sparse ai/codex-plugins` and `codex plugin add oracle-ai-data-platform-workbench-databricks-migrator@oracle-aidp-codex`, Codex clones the repo from GitHub. That clone is governed by [GitHub's privacy policy](https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement). The plugin author has no visibility into that clone activity.
+When you run `codex plugin marketplace add oracle-samples/oracle-aidp-samples --sparse .agents --sparse ai/codex-plugins` and `codex plugin add oracle-ai-data-platform-workbench-databricks-migrator@oracle-aidp-codex`, Codex clones the repo from GitHub. That clone is governed by [GitHub's privacy policy](https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement). The plugin author has no visibility into that clone activity.
 
 ## Contact
 

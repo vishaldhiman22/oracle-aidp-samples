@@ -77,6 +77,7 @@ The plugin lives in the `oracle-aidp-codex` marketplace, which is hosted as a sp
 # Register the marketplace (one-time)
 codex plugin marketplace add oracle-samples/oracle-aidp-samples \
     --ref main \
+    --sparse .agents \
     --sparse ai/codex-plugins
 
 # Install the plugin

@@ -11,6 +11,7 @@ Register the Oracle AIDP Codex plugin marketplace:
 ```bash
 codex plugin marketplace add oracle-samples/oracle-aidp-samples \
     --ref main \
+    --sparse .agents \
     --sparse ai/codex-plugins
 ```
 

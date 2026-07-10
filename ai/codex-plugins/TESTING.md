@@ -7,6 +7,7 @@ This folder is a Codex plugin marketplace hosted inside `oracle-samples/oracle-a
 ```bash
 codex plugin marketplace add oracle-samples/oracle-aidp-samples \
     --ref main \
+    --sparse .agents \
     --sparse ai/codex-plugins
 codex plugin marketplace list
 ```
@@ -17,12 +18,12 @@ Expected marketplace name:
 oracle-aidp-codex
 ```
 
-> **Path resolution (verified, codex-cli 0.141.0):** Codex resolves each plugin's
-> `source.path` in `.agents/plugins/marketplace.json` relative to the **marketplace
-> root** (the `ai/codex-plugins` dir / sparse subdir you add), *not* relative to the
-> manifest file's own directory. So `"path": "./plugins/<name>"` correctly resolves to
-> `ai/codex-plugins/plugins/<name>`. Confirm with `codex plugin list` — the PATH column
-> should point at `…/ai/codex-plugins/plugins/<name>`.
+> **Path resolution:** Codex validates the repository-root
+> `.agents/plugins/marketplace.json` and resolves each `source.path` from that root.
+> The sparse checkout must include both `.agents` and `ai/codex-plugins`; therefore
+> `"path": "./ai/codex-plugins/plugins/<name>"` resolves to the installed plugin
+> directory. Confirm with `codex plugin list` — the PATH column should point at
+> `…/ai/codex-plugins/plugins/<name>`.
 
 ## Install Engineer Agent
 
