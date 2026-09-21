@@ -18,6 +18,8 @@ All notable changes to this plugin are documented here.
 - Test CLI lookup, REST lookup, and REST request planning for all 14 additions,
   including rejection of the incorrect GET method for bundle publish status.
 - Retain the upload, CSV ingestion, marketplace, and packaging fixes from 0.9.1.
+- Preserve relative npm executable symlinks when packaging so archives do not
+  depend on paths on the build machine.
 
 ## [0.9.1] - 2026-08-27
 
