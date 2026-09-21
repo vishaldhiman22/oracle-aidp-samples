@@ -2,6 +2,23 @@
 
 All notable changes to this plugin are documented here.
 
+## [0.10.0] - 2026-09-21
+
+### Changed
+
+- Regenerate the CLI catalog from Oracle's current reference: 18 groups and 256
+  commands, including Data Lineage, bundle publishing, Compute configuration
+  import/export and cloning, Maven search, ZIP operations, and task-run retries.
+- Regenerate the REST catalog from Oracle's full endpoint index: 19 categories
+  and 271 operations for API version `/20260430`. Preserve documented deprecated
+  endpoints for compatibility and use POST for bundle publish status, as specified
+  in the operation reference.
+- Document the newer CLI requirement and route new bundle publishing requests
+  through the generic CLI/REST tools while retaining legacy deployment helpers.
+- Test CLI lookup, REST lookup, and REST request planning for all 14 additions,
+  including rejection of the incorrect GET method for bundle publish status.
+- Retain the upload, CSV ingestion, marketplace, and packaging fixes from 0.9.1.
+
 ## [0.9.1] - 2026-08-27
 
 ### Fixed

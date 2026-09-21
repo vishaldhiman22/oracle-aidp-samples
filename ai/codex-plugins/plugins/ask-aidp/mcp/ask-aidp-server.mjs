@@ -10,7 +10,7 @@ import path from 'node:path';
 import { createRequire } from 'node:module';
 import { fileURLToPath } from 'node:url';
 
-const SERVER_VERSION = '0.9.1';
+const SERVER_VERSION = '0.10.0';
 const SERVER_NAME = 'ask-aidp';
 const __filename = fileURLToPath(import.meta.url);
 const PLUGIN_ROOT = path.resolve(path.dirname(__filename), '..');
