@@ -4,6 +4,19 @@ All notable changes to this plugin are documented here.
 
 ## [0.10.0] - 2026-09-21
 
+### Fixed
+
+- Select CLI root request models using the CLI operation manifest instead of the
+  first (potentially nested) model in the Markdown. Regenerate the catalog,
+  including `ExportComputeConfigurationDetails` and its four root fields.
+- Default Compute configuration export REST requests to `Accept: application/x-yaml`
+  and JSON request bodies to `Content-Type: application/json`. Merge headers once
+  so OCI request composition does not append conflicting Accept values; expose
+  the same effective headers in dry runs.
+- Add regressions for model ordering, root fields, empty models, MLflow field
+  spelling, header overrides, composed HTTP headers, and mocked YAML responses.
+  Live export and workspace YAML readback still require an enabled instance.
+
 ### Changed
 
 - Regenerate the CLI catalog from Oracle's current reference: 18 groups and 256

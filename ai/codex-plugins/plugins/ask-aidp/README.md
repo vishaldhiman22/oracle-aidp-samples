@@ -146,6 +146,21 @@ If `oci login` does not work, configure OCI API key authentication using
 Set `AIDP_AUTH=api_key`, select the profile with `OCI_PROFILE`, and set
 `OCI_CONFIG_FILE` when the OCI config is not in its default location.
 
+## Refresh CLI Reference - Maintainers
+
+To regenerate the CLI catalog, supply the upstream CLI README and the matching
+installed CLI operation manifest. The manifest identifies the root request model;
+the README also lists nested models, whose order must not determine the payload.
+
+```bash
+node scripts/generate-cli-command-reference.mjs /path/to/cli/README.md /path/to/node_modules/aidp-cli/dist/operation_manifest.json
+```
+
+Alternatively, set `AIDP_CLI_MANIFEST` to that manifest path. Generation rejects
+ambiguous models and mismatched root fields instead of guessing. MLflow field
+names retain their documented JSON spelling. The catalog records the manifest's
+specification hash. Run `node scripts/qa.mjs` after regeneration.
+
 ## Build Offline Archives — Maintainers
 
 The package build fails if its vendor source does not contain `aidp-cli`,
@@ -328,6 +343,28 @@ Use Ask AIDP to dry-run auto-healing job run <job-run-key>.
 ```
 
 `aidp_auto_heal_workflow` inspects the job run, selects failed task keys by default, and wraps `aidp workflow repair-job-run`. It can also accept explicit `taskKeys`, rerun parameters, and `pollToCompletion`.
+
+## Compute Configuration Export
+
+The [export operation](https://docs.oracle.com/en/cloud/paas/ai-data-platform/aiwap/op-aidataplatforms-aidataplatformid-workspaces-workspacekey-clusters-clusterkey-actions-exportcomputeconfiguration-post.html)
+uses `ExportComputeConfigurationDetails` as its root request model, with
+`clusterScopedLibraries`, `environmentVariables`, `destinationPath`, and `fileName`.
+Library entries belong inside `clusterScopedLibraries`, not at the root.
+
+`aidp_rest` automatically uses `Accept: application/x-yaml` for this export POST
+and `Content-Type: application/json` for its JSON body. Dry runs show the same
+effective headers as live requests. Explicit header overrides are case-insensitive;
+duplicate header names with different casing are rejected.
+
+Live acceptance test (requires an instance with Compute Configuration enabled):
+
+1. Preview the request with `dryRun: true`; use non-secret values and a unique YAML filename.
+2. Export on a test cluster, then record HTTP 200, the request ID, response headers, and YAML.
+3. Retrieve the created file using the returned workspace path; parse its YAML and compare the selected libraries and environment variables.
+
+A 403 stating that Compute Configuration is not enabled is a feature-availability
+blocker, not successful payload validation. Offline QA tests headers and YAML
+response handling with a mocked transport; it does not replace this live test.
 
 ## Evidence
 

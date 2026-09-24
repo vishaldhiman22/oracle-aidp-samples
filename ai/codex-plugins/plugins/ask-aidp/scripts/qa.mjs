@@ -1,9 +1,10 @@
 #!/usr/bin/env node
 import { spawn } from 'node:child_process';
-import { rejects } from 'node:assert/strict';
+import { deepEqual, rejects } from 'node:assert/strict';
 import { chmodSync, existsSync, mkdirSync, readFileSync, readdirSync, readlinkSync, rmSync, writeFileSync } from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { computeExportTransportTest, exportFields, exportModel, requestBodyReferenceTest } from './qa-compute-export.mjs';
 
 const __filename = fileURLToPath(import.meta.url);
 const PLUGIN_ROOT = path.resolve(path.dirname(__filename), '..');
@@ -197,6 +198,8 @@ async function main() {
   mcpConfigTest();
   marketplaceManifestTest();
   symlinkTest();
+  requestBodyReferenceTest();
+  await computeExportTransportTest();
   const env = {};
   const localAidp = path.resolve(PLUGIN_ROOT, '..', '..', 'samples', 'npm-cli', 'node_modules', '.bin', process.platform === 'win32' ? 'aidp.cmd' : 'aidp');
   if (!process.env.AIDP_CLI_BIN && existsSync(localAidp)) env.AIDP_CLI_BIN = localAidp;
@@ -333,6 +336,10 @@ async function main() {
       const reference = JSON.parse(toolText(referenceResult)).command;
       assert(reference.fullName === `aidp ${group} ${command}`, `wrong CLI reference: ${group} ${command}`);
       assert(reference.usage.startsWith(reference.fullName), `missing usage: ${reference.fullName}`);
+      if (command === 'export-compute-configuration') {
+        assert(reference.bodyModel === exportModel, 'export default lookup must expose the root request model');
+        deepEqual(reference.bodyFields.map((field) => field.name).sort(), [...exportFields].sort());
+      }
 
       const endpointResult = await server.request('tools/call', {
         name: 'aidp_rest_api_reference', arguments: { category, search: endpointPath }
@@ -358,6 +365,7 @@ async function main() {
       const expectedPath = requestPath.replace('{aiDataPlatformId}', 'ocid1.aidataplatform.oc1..example')
         .replace('{workspaceKey}', 'workspace-key').replace('{clusterKey}', 'cluster-key');
       assert(plan.method === method && new URL(plan.url).pathname === expectedPath, `REST request plan mismatch: ${endpointPath}`);
+      assert(plan.headers.accept === (command === 'export-compute-configuration' ? 'application/x-yaml' : 'application/json'), `wrong effective Accept header: ${endpointPath}`);
     }
 
     await rejects(server.request('tools/call', {

@@ -131,4 +131,11 @@ New reference coverage includes Data Lineage, bundle publishing, Compute cloning
 
 ## Safety
 
+For Compute configuration export, use the `ExportComputeConfigurationDetails`
+root payload, not the nested `ComputeConfigurationLibraryEntry` model.
+`aidp_rest` defaults this POST to `Accept: application/x-yaml`; preview effective
+headers with `dryRun: true`. On an enabled instance, verify export success and
+read back the created YAML. Report feature-disabled 403 responses as blocked
+validation, not a passed export or evidence that the payload is valid.
+
 `aidp_cli` accepts an argument array, not a shell string. Do not embed shell operators. Use the `body` argument for JSON request bodies instead of writing one-off shell heredocs.

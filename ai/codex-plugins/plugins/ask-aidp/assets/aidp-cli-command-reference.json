@@ -1,6 +1,11 @@
 {
-  "generatedAt": "2026-09-21T16:46:31.281Z",
+  "generatedAt": "2026-09-24T19:39:15.470Z",
   "source": "https://github.com/oracle-samples/aidataplatform-sdk/blob/main/docs/cli/README.md",
+  "modelSource": {
+    "name": "aidp-cli/dist/operation_manifest.json",
+    "version": 4,
+    "sourceSpecSha256": "0b2f2fc611a601c5cf12f96cd3f3419acb96afca79bedcf779278ad6db931cc1"
+  },
   "groupCount": 18,
   "commandCount": 256,
   "groups": [
@@ -25,7 +30,7 @@
           "command": "create",
           "summary": "Creates an agent.",
           "usage": "aidp agent create <AI-DATA-PLATFORM-ID> <WORKSPACE-KEY> --body <JSON>",
-          "bodyModel": "AgentCardCapabilitiesDetail"
+          "bodyModel": "CreateAgentDetails"
         },
         {
           "displayName": "agent delete",
@@ -151,7 +156,7 @@
           "command": "manage-permission",
           "summary": "Update the permissions for a given agent.",
           "usage": "aidp agent manage-permission <AI-DATA-PLATFORM-ID> <WORKSPACE-KEY> <AGENT-KEY> --body <JSON>",
-          "bodyModel": "AssignAgentPermissionDetails"
+          "bodyModel": "ManageAgentPermissionDetails"
         },
         {
           "displayName": "agent preview-agent-agent-card",
@@ -160,7 +165,7 @@
           "command": "preview-agent-agent-card",
           "summary": "Returns the agent card based on the given agent card configuration.",
           "usage": "aidp agent preview-agent-agent-card <AI-DATA-PLATFORM-ID> <WORKSPACE-KEY> --body <JSON>",
-          "bodyModel": "AgentCardCapabilitiesDetail"
+          "bodyModel": "PreviewAgentCardDetails"
         },
         {
           "displayName": "agent redeploy-agent-by-key",
@@ -169,7 +174,7 @@
           "command": "redeploy-agent-by-key",
           "summary": "Redeploys an agent.",
           "usage": "aidp agent redeploy-agent-by-key <AI-DATA-PLATFORM-ID> <WORKSPACE-KEY> <AGENT-KEY> --body <JSON>",
-          "bodyModel": "OAuthConfiguration"
+          "bodyModel": "UpdateAgentDeploymentDetails"
         },
         {
           "displayName": "agent update",
@@ -178,7 +183,7 @@
           "command": "update",
           "summary": "Updates an agent with provided details.",
           "usage": "aidp agent update <AI-DATA-PLATFORM-ID> <WORKSPACE-KEY> <AGENT-KEY> --body <JSON>",
-          "bodyModel": "AgentCardCapabilitiesDetail"
+          "bodyModel": "UpdateAgentDetails"
         },
         {
           "displayName": "agent update-deployment-metadata",
@@ -187,7 +192,7 @@
           "command": "update-deployment-metadata",
           "summary": "Updates the deployment metadata for an agent.",
           "usage": "aidp agent update-deployment-metadata <AI-DATA-PLATFORM-ID> <WORKSPACE-KEY> <AGENT-KEY> --body <JSON>",
-          "bodyModel": "AgentCardCapabilitiesDetail"
+          "bodyModel": "UpdateAgentDeploymentMetadataDetails"
         },
         {
           "displayName": "agent validate-agent",
@@ -262,7 +267,7 @@
           "command": "create",
           "summary": "(Deprecated). (Deprecated)",
           "usage": "aidp bundle create <AI-DATA-PLATFORM-ID> <WORKSPACE-KEY> --body <JSON>",
-          "bodyModel": "BundledResource"
+          "bodyModel": "CreateBundleDetails"
         },
         {
           "displayName": "bundle create-action",
@@ -271,7 +276,7 @@
           "command": "create-action",
           "summary": "(Preview) Creates a new bundle. (Preview) Creates a new bundle. This operation is asynchronous. The service validates the request, starts bundle creation, and returns an async operation key in the response headers. Use the async operation APIs to track completion. Typical use cases: - capture selected workspace resources into a version-controlled bundle - prepare a bundle for later deployment or promotion - establish a bundle root that can later be inspected, updated, or deployed Request notes: - path identifies the parent folder in the workspace volume where the bundle should be created - nam",
           "usage": "aidp bundle create-action <AI-DATA-PLATFORM-ID> <WORKSPACE-KEY> --body <JSON>",
-          "bodyModel": "BundledResource"
+          "bodyModel": "CreateBundleDetails"
         },
         {
           "displayName": "bundle deploy",
@@ -422,7 +427,7 @@
           "command": "manage-permission",
           "summary": "Updates permission details for a catalog.",
           "usage": "aidp catalog manage-permission <AI-DATA-PLATFORM-ID> <CATALOG-KEY> --body <JSON>",
-          "bodyModel": "AssignCatalogPermissionDetails"
+          "bodyModel": "ManageCatalogPermissionDetails"
         },
         {
           "displayName": "catalog refresh",
@@ -440,7 +445,7 @@
           "command": "test-connection",
           "summary": "Tests the connection to an external catalog.",
           "usage": "aidp catalog test-connection <AI-DATA-PLATFORM-ID> --body <JSON>",
-          "bodyModel": "CatalogConnectionDetails"
+          "bodyModel": "CatalogTestConnectionDetails"
         },
         {
           "displayName": "catalog update",
@@ -474,7 +479,7 @@
           "command": "create",
           "summary": "Creates a new cluster with the provided details.",
           "usage": "aidp cluster create <AI-DATA-PLATFORM-ID> <WORKSPACE-KEY> --body <JSON>",
-          "bodyModel": "AttachToNotebookConfig"
+          "bodyModel": "CreateClusterDetails"
         },
         {
           "displayName": "cluster delete",
@@ -501,7 +506,7 @@
           "command": "export-compute-configuration",
           "summary": "Writes selected Compute configuration values supplied by the caller to a workspace YAML file without overwriting an existing file.",
           "usage": "aidp cluster export-compute-configuration <AI-DATA-PLATFORM-ID> <WORKSPACE-KEY> <CLUSTER-KEY> --body <JSON>",
-          "bodyModel": "ComputeConfigurationLibraryEntry"
+          "bodyModel": "ExportComputeConfigurationDetails"
         },
         {
           "displayName": "cluster get",
@@ -573,7 +578,7 @@
           "command": "manage-permission",
           "summary": "Updates the permissions for a given cluster.",
           "usage": "aidp cluster manage-permission <AI-DATA-PLATFORM-ID> <WORKSPACE-KEY> <CLUSTER-KEY> --body <JSON>",
-          "bodyModel": "AssignClusterPermissionDetails"
+          "bodyModel": "ManageClusterPermissionDetails"
         },
         {
           "displayName": "cluster patch-library",
@@ -582,7 +587,7 @@
           "command": "patch-library",
           "summary": "Updates libraries of a cluster with the provided patches.",
           "usage": "aidp cluster patch-library <AI-DATA-PLATFORM-ID> <WORKSPACE-KEY> <CLUSTER-KEY> --body <JSON>",
-          "bodyModel": "ClusterLibraryDetails"
+          "bodyModel": "PatchClusterLibraryDetails"
         },
         {
           "displayName": "cluster query-replica-ids",
@@ -600,7 +605,7 @@
           "command": "restart",
           "summary": "Restarts a running cluster.",
           "usage": "aidp cluster restart <AI-DATA-PLATFORM-ID> <WORKSPACE-KEY> <CLUSTER-KEY> --body <JSON>",
-          "bodyModel": ""
+          "bodyModel": "RestartClusterDetails"
         },
         {
           "displayName": "cluster search-logs",
@@ -627,7 +632,7 @@
           "command": "start",
           "summary": "Starts a cluster that has halted operation.",
           "usage": "aidp cluster start <AI-DATA-PLATFORM-ID> <WORKSPACE-KEY> <CLUSTER-KEY> --body <JSON>",
-          "bodyModel": ""
+          "bodyModel": "StartClusterDetails"
         },
         {
           "displayName": "cluster stop",
@@ -636,7 +641,7 @@
           "command": "stop",
           "summary": "Stops an active cluster.",
           "usage": "aidp cluster stop <AI-DATA-PLATFORM-ID> <WORKSPACE-KEY> <CLUSTER-KEY> --body <JSON>",
-          "bodyModel": ""
+          "bodyModel": "StopClusterDetails"
         },
         {
           "displayName": "cluster summarize-metrics-data",
@@ -654,7 +659,7 @@
           "command": "update",
           "summary": "Update the details of a given cluster.",
           "usage": "aidp cluster update <AI-DATA-PLATFORM-ID> <WORKSPACE-KEY> <CLUSTER-KEY> --body <JSON>",
-          "bodyModel": "ClusterRuntimeConfig"
+          "bodyModel": "UpdateClusterDetails"
         }
       ]
     },
@@ -706,7 +711,7 @@
           "command": "update",
           "summary": "Updates a credential object. Updates a credential object. The operation completes synchronously; callers can invoke get to confirm the latest state.",
           "usage": "aidp credentials update <AI-DATA-PLATFORM-ID> <CREDENTIAL-KEY> --body <JSON>",
-          "bodyModel": "CredentialDetails"
+          "bodyModel": "UpdateDataLakeCredentialDetails"
         }
       ]
     },
@@ -882,7 +887,7 @@
           "command": "manage-permission",
           "summary": "Updates permissions on a Delta Share.",
           "usage": "aidp delta-share manage-permission <AI-DATA-PLATFORM-ID> <SHARE-KEY> --body <JSON>",
-          "bodyModel": "AssignSharePermissionDetails"
+          "bodyModel": "ManageSharePermissionDetails"
         },
         {
           "displayName": "delta-share manage-recipient-permission",
@@ -891,7 +896,7 @@
           "command": "manage-recipient-permission",
           "summary": "Updates the permissions of a Delta Share recipient.",
           "usage": "aidp delta-share manage-recipient-permission <AI-DATA-PLATFORM-ID> <RECIPIENT-KEY> --body <JSON>",
-          "bodyModel": "AssignRecipientPermissionDetails"
+          "bodyModel": "ManageRecipientPermissionDetails"
         },
         {
           "displayName": "delta-share update",
@@ -1150,7 +1155,7 @@
           "command": "log-experiment-run-batch",
           "summary": "(Preview) Logs an experiment run batch.",
           "usage": "aidp mlops log-experiment-run-batch <AI-DATA-PLATFORM-ID> <WORKSPACE-KEY> --body <JSON>",
-          "bodyModel": "ExperimentRunMetric"
+          "bodyModel": "LogExperimentRunBatchDetails"
         },
         {
           "displayName": "mlops log-experiment-run-inputs",
@@ -1159,7 +1164,7 @@
           "command": "log-experiment-run-inputs",
           "summary": "(Preview) Logs experiment run inputs.",
           "usage": "aidp mlops log-experiment-run-inputs <AI-DATA-PLATFORM-ID> <WORKSPACE-KEY> --body <JSON>",
-          "bodyModel": "Dataset"
+          "bodyModel": "LogExperimentRunInputsDetails"
         },
         {
           "displayName": "mlops log-experiment-run-metric",
@@ -1285,7 +1290,7 @@
           "command": "update-experiment-run-tags",
           "summary": "(Preview) Updates tags on an experiment run.",
           "usage": "aidp mlops update-experiment-run-tags <AI-DATA-PLATFORM-ID> <WORKSPACE-KEY> --body <JSON>",
-          "bodyModel": "ExperimentRunTag"
+          "bodyModel": "UpdateExperimentRunTagsDetails"
         },
         {
           "displayName": "mlops update-experiment-tags",
@@ -1294,7 +1299,7 @@
           "command": "update-experiment-tags",
           "summary": "(Preview) Updates tags on experiment.",
           "usage": "aidp mlops update-experiment-tags <AI-DATA-PLATFORM-ID> <WORKSPACE-KEY> --body <JSON>",
-          "bodyModel": "ExperimentTag"
+          "bodyModel": "UpdateExperimentTagsDetails"
         },
         {
           "displayName": "mlops update-model-version",
@@ -1312,7 +1317,7 @@
           "command": "update-model-version-tags",
           "summary": "(Preview) Updates tags on a model version.",
           "usage": "aidp mlops update-model-version-tags <AI-DATA-PLATFORM-ID> --body <JSON>",
-          "bodyModel": "ModelVersionTag"
+          "bodyModel": "UpdateModelVersionTagsDetails"
         },
         {
           "displayName": "mlops update-registered-model",
@@ -1330,7 +1335,7 @@
           "command": "update-registered-model-tags",
           "summary": "(Preview) Updates tags on a registered model.",
           "usage": "aidp mlops update-registered-model-tags <AI-DATA-PLATFORM-ID> --body <JSON>",
-          "bodyModel": "RegisteredModelTag"
+          "bodyModel": "UpdateRegisteredModelTagsDetails"
         }
       ]
     },
@@ -1427,7 +1432,7 @@
           "command": "patch-session",
           "summary": "Patches a session with a given ID with the provided details. Patches a session with a given ID with the provided details. You can use this to rename a session.",
           "usage": "aidp notebook patch-session <AI-DATA-PLATFORM-ID> <WORKSPACE-KEY> <SESSION-ID> --body <JSON>",
-          "bodyModel": "Kernel"
+          "bodyModel": "PatchSessionDetails"
         },
         {
           "displayName": "notebook update-content",
@@ -1630,7 +1635,7 @@
           "command": "infer",
           "summary": "Returns details of a table schema from the specified location.",
           "usage": "aidp schema infer <AI-DATA-PLATFORM-ID> <SCHEMA-KEY> --body <JSON>",
-          "bodyModel": "InferSchemaProperties"
+          "bodyModel": "PerformInferSchemaDetails"
         },
         {
           "displayName": "schema infer-with-preview",
@@ -1639,7 +1644,7 @@
           "command": "infer-with-preview",
           "summary": "Returns table schema and data from the specified location.",
           "usage": "aidp schema infer-with-preview <AI-DATA-PLATFORM-ID> <SCHEMA-KEY> --body <JSON>",
-          "bodyModel": "InferSchemaProperties"
+          "bodyModel": "PerformInferSchemaDetails"
         },
         {
           "displayName": "schema list",
@@ -1702,7 +1707,7 @@
           "command": "manage-permission",
           "summary": "Updates the permissions for a given schema.",
           "usage": "aidp schema manage-permission <AI-DATA-PLATFORM-ID> <SCHEMA-KEY> --body <JSON>",
-          "bodyModel": "AssignSchemaPermissionDetails"
+          "bodyModel": "ManageSchemaPermissionDetails"
         },
         {
           "displayName": "schema manage-table-permission",
@@ -1711,7 +1716,7 @@
           "command": "manage-table-permission",
           "summary": "Updates the permissions for a given table.",
           "usage": "aidp schema manage-table-permission <AI-DATA-PLATFORM-ID> <TABLE-KEY> --body <JSON>",
-          "bodyModel": "AssignTablePermissionDetails"
+          "bodyModel": "ManageTablePermissionDetails"
         },
         {
           "displayName": "schema manage-view-permission",
@@ -1720,7 +1725,7 @@
           "command": "manage-view-permission",
           "summary": "Updates permissions on a view.",
           "usage": "aidp schema manage-view-permission <AI-DATA-PLATFORM-ID> <VIEW-KEY> --body <JSON>",
-          "bodyModel": "AssignViewPermissionDetails"
+          "bodyModel": "ManageViewPermissionDetails"
         },
         {
           "displayName": "schema refresh",
@@ -1765,7 +1770,7 @@
           "command": "update-table",
           "summary": "Updates a table with provided details.",
           "usage": "aidp schema update-table <AI-DATA-PLATFORM-ID> <TABLE-KEY> --body <JSON>",
-          "bodyModel": "RenameTableFieldDetails"
+          "bodyModel": "UpdateTableDetails"
         },
         {
           "displayName": "schema update-view",
@@ -1826,7 +1831,7 @@
           "command": "update",
           "summary": "(Preview) Updates the metadata or payload of an existing user setting, letting you rotate credentials or change defaults.",
           "usage": "aidp user-setting update <AI-DATA-PLATFORM-ID> <SETTING-KEY> --body <JSON>",
-          "bodyModel": "GitAccountUserSetting"
+          "bodyModel": "UpdateUserSettingDetails"
         }
       ]
     },
@@ -1941,7 +1946,7 @@
           "command": "manage-permission",
           "summary": "Updates the permissions on a volume.",
           "usage": "aidp volume manage-permission <AI-DATA-PLATFORM-ID> <VOLUME-KEY> --body <JSON>",
-          "bodyModel": "AssignVolumePermissionDetails"
+          "bodyModel": "ManageVolumePermissionDetails"
         },
         {
           "displayName": "volume update",
@@ -2029,7 +2034,7 @@
           "command": "create-job",
           "summary": "Creates a job.",
           "usage": "aidp workflow create-job <AI-DATA-PLATFORM-ID> <WORKSPACE-KEY> --body <JSON>",
-          "bodyModel": "AutoScale"
+          "bodyModel": "CreateJobDetails"
         },
         {
           "displayName": "workflow create-job-run",
@@ -2164,7 +2169,7 @@
           "command": "manage-job-permission",
           "summary": "Update job permissions with the provided details.",
           "usage": "aidp workflow manage-job-permission <AI-DATA-PLATFORM-ID> <WORKSPACE-KEY> <JOB-KEY> --body <JSON>",
-          "bodyModel": "AssignJobPermissionDetails"
+          "bodyModel": "ManageJobPermissionDetails"
         },
         {
           "displayName": "workflow repair-job-run",
@@ -2173,7 +2178,7 @@
           "command": "repair-job-run",
           "summary": "Repairs and reruns a job run.",
           "usage": "aidp workflow repair-job-run <AI-DATA-PLATFORM-ID> <WORKSPACE-KEY> <JOB-RUN-KEY> --body <JSON>",
-          "bodyModel": "Parameter"
+          "bodyModel": "RepairJobRunDetails"
         },
         {
           "displayName": "workflow update-job",
@@ -2182,7 +2187,7 @@
           "command": "update-job",
           "summary": "Updates details for a job.",
           "usage": "aidp workflow update-job <AI-DATA-PLATFORM-ID> <WORKSPACE-KEY> <JOB-KEY> --body <JSON>",
-          "bodyModel": "AutoScale"
+          "bodyModel": "UpdateJobDetails"
         }
       ]
     },
@@ -2261,7 +2266,7 @@
           "command": "manage-create-permission",
           "summary": "Updates create workspace permissions on a workspace.",
           "usage": "aidp workspace manage-create-permission <AI-DATA-PLATFORM-ID> --body <JSON>",
-          "bodyModel": "AssignCreateWorkspacePermissionDetails"
+          "bodyModel": "ManageCreateWorkspacePermissionDetails"
         },
         {
           "displayName": "workspace manage-permission",
@@ -2270,7 +2275,7 @@
           "command": "manage-permission",
           "summary": "Updates permissions on a workspace.",
           "usage": "aidp workspace manage-permission <AI-DATA-PLATFORM-ID> <WORKSPACE-KEY> --body <JSON>",
-          "bodyModel": "AssignWorkspacePermissionDetails"
+          "bodyModel": "ManageWorkspacePermissionDetails"
         },
         {
           "displayName": "workspace update",
@@ -2279,7 +2284,7 @@
           "command": "update",
           "summary": "Updates the details of a workspace.",
           "usage": "aidp workspace update <AI-DATA-PLATFORM-ID> <WORKSPACE-KEY> --body <JSON>",
-          "bodyModel": "Scan"
+          "bodyModel": "UpdateWorkspaceDetails"
         },
         {
           "displayName": "workspace update-async-operation-status",
@@ -2376,7 +2381,7 @@
           "command": "manage-permission",
           "summary": "Updates permissions on a workspace object.",
           "usage": "aidp workspace-object manage-permission <AI-DATA-PLATFORM-ID> <WORKSPACE-KEY> <OBJECT-KEY> --body <JSON>",
-          "bodyModel": "AssignWorkspaceObjectPermissionDetails"
+          "bodyModel": "ManageWorkspaceObjectPermissionDetails"
         },
         {
           "displayName": "workspace-object move",
@@ -2475,11 +2480,61 @@
       "anchor": "agent-create",
       "summary": "Creates an agent.",
       "usage": "aidp agent create <AI-DATA-PLATFORM-ID> <WORKSPACE-KEY> --body <JSON>",
-      "bodyModel": "AgentCardCapabilitiesDetail",
+      "bodyModel": "CreateAgentDetails",
       "bodyFields": [
         {
-          "name": "isStreaming",
-          "type": "boolean, optional",
+          "name": "agentCardConfig",
+          "type": "object, optional",
+          "description": ""
+        },
+        {
+          "name": "computeKey",
+          "type": "string, optional",
+          "description": ""
+        },
+        {
+          "name": "dependenciesFilePath",
+          "type": "string, optional",
+          "description": ""
+        },
+        {
+          "name": "description",
+          "type": "string, optional",
+          "description": ""
+        },
+        {
+          "name": "diagram",
+          "type": "object, optional",
+          "description": ""
+        },
+        {
+          "name": "displayName",
+          "type": "string, required",
+          "description": ""
+        },
+        {
+          "name": "entryFilePath",
+          "type": "string, optional",
+          "description": ""
+        },
+        {
+          "name": "guardrails",
+          "type": "object, optional",
+          "description": ""
+        },
+        {
+          "name": "pathInfo",
+          "type": "string, required",
+          "description": ""
+        },
+        {
+          "name": "sessionConfig",
+          "type": "object, optional",
+          "description": ""
+        },
+        {
+          "name": "type",
+          "type": "string, optional",
           "description": ""
         }
       ],
@@ -2666,26 +2721,16 @@
       "anchor": "agent-manage-permission",
       "summary": "Update the permissions for a given agent.",
       "usage": "aidp agent manage-permission <AI-DATA-PLATFORM-ID> <WORKSPACE-KEY> <AGENT-KEY> --body <JSON>",
-      "bodyModel": "AssignAgentPermissionDetails",
+      "bodyModel": "ManageAgentPermissionDetails",
       "bodyFields": [
         {
-          "name": "assignees",
-          "type": "object, required",
+          "name": "assignAgentPermissionDetails",
+          "type": "object, optional",
           "description": ""
         },
         {
-          "name": "excludeColumns",
-          "type": "array, required",
-          "description": ""
-        },
-        {
-          "name": "includeColumns",
-          "type": "array, required",
-          "description": ""
-        },
-        {
-          "name": "permissions",
-          "type": "array, required",
+          "name": "revokeAgentPermissionDetails",
+          "type": "object, optional",
           "description": ""
         }
       ],
@@ -2698,11 +2743,11 @@
       "anchor": "agent-preview-agent-agent-card",
       "summary": "Returns the agent card based on the given agent card configuration.",
       "usage": "aidp agent preview-agent-agent-card <AI-DATA-PLATFORM-ID> <WORKSPACE-KEY> --body <JSON>",
-      "bodyModel": "AgentCardCapabilitiesDetail",
+      "bodyModel": "PreviewAgentCardDetails",
       "bodyFields": [
         {
-          "name": "isStreaming",
-          "type": "boolean, optional",
+          "name": "agentCardConfigDetails",
+          "type": "object, required",
           "description": ""
         }
       ],
@@ -2715,21 +2760,31 @@
       "anchor": "agent-redeploy-agent-by-key",
       "summary": "Redeploys an agent.",
       "usage": "aidp agent redeploy-agent-by-key <AI-DATA-PLATFORM-ID> <WORKSPACE-KEY> <AGENT-KEY> --body <JSON>",
-      "bodyModel": "OAuthConfiguration",
+      "bodyModel": "UpdateAgentDeploymentDetails",
       "bodyFields": [
         {
-          "name": "audienceClaim",
-          "type": "array, optional",
-          "description": ""
-        },
-        {
-          "name": "issuerClaim",
+          "name": "agentComputeKey",
           "type": "string, optional",
           "description": ""
         },
         {
-          "name": "jwksUri",
+          "name": "agentKey",
+          "type": "string, required",
+          "description": ""
+        },
+        {
+          "name": "description",
           "type": "string, optional",
+          "description": ""
+        },
+        {
+          "name": "displayName",
+          "type": "string, optional",
+          "description": ""
+        },
+        {
+          "name": "oAuthConfig",
+          "type": "object, optional",
           "description": ""
         }
       ],
@@ -2742,11 +2797,66 @@
       "anchor": "agent-update",
       "summary": "Updates an agent with provided details.",
       "usage": "aidp agent update <AI-DATA-PLATFORM-ID> <WORKSPACE-KEY> <AGENT-KEY> --body <JSON>",
-      "bodyModel": "AgentCardCapabilitiesDetail",
+      "bodyModel": "UpdateAgentDetails",
       "bodyFields": [
         {
-          "name": "isStreaming",
-          "type": "boolean, optional",
+          "name": "addedNodes",
+          "type": "array, optional",
+          "description": ""
+        },
+        {
+          "name": "agentCardConfig",
+          "type": "object, optional",
+          "description": ""
+        },
+        {
+          "name": "computeKey",
+          "type": "string, optional",
+          "description": ""
+        },
+        {
+          "name": "deletedNodes",
+          "type": "array, optional",
+          "description": ""
+        },
+        {
+          "name": "dependenciesFilePath",
+          "type": "string, optional",
+          "description": ""
+        },
+        {
+          "name": "description",
+          "type": "string, optional",
+          "description": ""
+        },
+        {
+          "name": "diagram",
+          "type": "object, optional",
+          "description": ""
+        },
+        {
+          "name": "displayName",
+          "type": "string, optional",
+          "description": ""
+        },
+        {
+          "name": "entryFilePath",
+          "type": "string, optional",
+          "description": ""
+        },
+        {
+          "name": "guardrails",
+          "type": "object, optional",
+          "description": ""
+        },
+        {
+          "name": "sessionConfig",
+          "type": "object, optional",
+          "description": ""
+        },
+        {
+          "name": "updatedNodes",
+          "type": "array, optional",
           "description": ""
         }
       ],
@@ -2759,10 +2869,20 @@
       "anchor": "agent-update-deployment-metadata",
       "summary": "Updates the deployment metadata for an agent.",
       "usage": "aidp agent update-deployment-metadata <AI-DATA-PLATFORM-ID> <WORKSPACE-KEY> <AGENT-KEY> --body <JSON>",
-      "bodyModel": "AgentCardCapabilitiesDetail",
+      "bodyModel": "UpdateAgentDeploymentMetadataDetails",
       "bodyFields": [
         {
-          "name": "isStreaming",
+          "name": "agentCardConfigDetail",
+          "type": "object, optional",
+          "description": ""
+        },
+        {
+          "name": "deploymentKey",
+          "type": "string, optional",
+          "description": ""
+        },
+        {
+          "name": "updateAgentFlowAgentCardConfig",
           "type": "boolean, optional",
           "description": ""
         }
@@ -2893,15 +3013,25 @@
       "anchor": "bundle-create",
       "summary": "(Deprecated). (Deprecated)",
       "usage": "aidp bundle create <AI-DATA-PLATFORM-ID> <WORKSPACE-KEY> --body <JSON>",
-      "bodyModel": "BundledResource",
+      "bodyModel": "CreateBundleDetails",
       "bodyFields": [
         {
-          "name": "resourceKey",
+          "name": "bundledResources",
+          "type": "array, optional",
+          "description": ""
+        },
+        {
+          "name": "description",
+          "type": "string, optional",
+          "description": ""
+        },
+        {
+          "name": "name",
           "type": "string, required",
           "description": ""
         },
         {
-          "name": "resourceType",
+          "name": "path",
           "type": "string, required",
           "description": ""
         }
@@ -2915,15 +3045,25 @@
       "anchor": "bundle-create-action",
       "summary": "(Preview) Creates a new bundle. (Preview) Creates a new bundle. This operation is asynchronous. The service validates the request, starts bundle creation, and returns an async operation key in the response headers. Use the async operation APIs to track completion. Typical use cases: - capture selected workspace resources into a version-controlled bundle - prepare a bundle for later deployment or promotion - establish a bundle root that can later be inspected, updated, or deployed Request notes: - path identifies the parent folder in the workspace volume where the bundle should be created - nam",
       "usage": "aidp bundle create-action <AI-DATA-PLATFORM-ID> <WORKSPACE-KEY> --body <JSON>",
-      "bodyModel": "BundledResource",
+      "bodyModel": "CreateBundleDetails",
       "bodyFields": [
         {
-          "name": "resourceKey",
+          "name": "bundledResources",
+          "type": "array, optional",
+          "description": ""
+        },
+        {
+          "name": "description",
+          "type": "string, optional",
+          "description": ""
+        },
+        {
+          "name": "name",
           "type": "string, required",
           "description": ""
         },
         {
-          "name": "resourceType",
+          "name": "path",
           "type": "string, required",
           "description": ""
         }
@@ -3193,16 +3333,16 @@
       "anchor": "catalog-manage-permission",
       "summary": "Updates permission details for a catalog.",
       "usage": "aidp catalog manage-permission <AI-DATA-PLATFORM-ID> <CATALOG-KEY> --body <JSON>",
-      "bodyModel": "AssignCatalogPermissionDetails",
+      "bodyModel": "ManageCatalogPermissionDetails",
       "bodyFields": [
         {
-          "name": "assignees",
-          "type": "object, required",
+          "name": "assignCatalogPermissionDetails",
+          "type": "object, optional",
           "description": ""
         },
         {
-          "name": "permissions",
-          "type": "array, required",
+          "name": "revokeCatalogPermissionDetails",
+          "type": "object, optional",
           "description": ""
         }
       ],
@@ -3226,15 +3366,20 @@
       "anchor": "catalog-test-connection",
       "summary": "Tests the connection to an external catalog.",
       "usage": "aidp catalog test-connection <AI-DATA-PLATFORM-ID> --body <JSON>",
-      "bodyModel": "CatalogConnectionDetails",
+      "bodyModel": "CatalogTestConnectionDetails",
       "bodyFields": [
         {
-          "name": "connectionProperties",
-          "type": "object, required",
+          "name": "connectionDetails",
+          "type": "object, optional",
           "description": ""
         },
         {
-          "name": "displayName",
+          "name": "key",
+          "type": "string, optional",
+          "description": ""
+        },
+        {
+          "name": "sourceType",
           "type": "string, optional",
           "description": ""
         }
@@ -3291,10 +3436,30 @@
       "anchor": "cluster-create",
       "summary": "Creates a new cluster with the provided details.",
       "usage": "aidp cluster create <AI-DATA-PLATFORM-ID> <WORKSPACE-KEY> --body <JSON>",
-      "bodyModel": "AttachToNotebookConfig",
+      "bodyModel": "CreateClusterDetails",
       "bodyFields": [
         {
-          "name": "notebookPath",
+          "name": "description",
+          "type": "string, optional",
+          "description": ""
+        },
+        {
+          "name": "displayName",
+          "type": "string, required",
+          "description": ""
+        },
+        {
+          "name": "driverConfig",
+          "type": "object, required",
+          "description": ""
+        },
+        {
+          "name": "nodeType",
+          "type": "string, optional",
+          "description": ""
+        },
+        {
+          "name": "type",
           "type": "string, required",
           "description": ""
         }
@@ -3386,20 +3551,25 @@
       "anchor": "cluster-export-compute-configuration",
       "summary": "Writes selected Compute configuration values supplied by the caller to a workspace YAML file without overwriting an existing file.",
       "usage": "aidp cluster export-compute-configuration <AI-DATA-PLATFORM-ID> <WORKSPACE-KEY> <CLUSTER-KEY> --body <JSON>",
-      "bodyModel": "ComputeConfigurationLibraryEntry",
+      "bodyModel": "ExportComputeConfigurationDetails",
       "bodyFields": [
         {
-          "name": "jar",
+          "name": "clusterScopedLibraries",
+          "type": "array, optional",
+          "description": ""
+        },
+        {
+          "name": "destinationPath",
           "type": "string, optional",
           "description": ""
         },
         {
-          "name": "path",
-          "type": "string, optional",
+          "name": "environmentVariables",
+          "type": "object, optional",
           "description": ""
         },
         {
-          "name": "pip",
+          "name": "fileName",
           "type": "string, optional",
           "description": ""
         }
@@ -3496,16 +3666,16 @@
       "anchor": "cluster-manage-permission",
       "summary": "Updates the permissions for a given cluster.",
       "usage": "aidp cluster manage-permission <AI-DATA-PLATFORM-ID> <WORKSPACE-KEY> <CLUSTER-KEY> --body <JSON>",
-      "bodyModel": "AssignClusterPermissionDetails",
+      "bodyModel": "ManageClusterPermissionDetails",
       "bodyFields": [
         {
-          "name": "assignees",
-          "type": "object, required",
+          "name": "assignClusterPermissionDetails",
+          "type": "object, optional",
           "description": ""
         },
         {
-          "name": "permissions",
-          "type": "array, required",
+          "name": "revokeClusterPermissionDetails",
+          "type": "object, optional",
           "description": ""
         }
       ],
@@ -3518,16 +3688,11 @@
       "anchor": "cluster-patch-library",
       "summary": "Updates libraries of a cluster with the provided patches.",
       "usage": "aidp cluster patch-library <AI-DATA-PLATFORM-ID> <WORKSPACE-KEY> <CLUSTER-KEY> --body <JSON>",
-      "bodyModel": "ClusterLibraryDetails",
+      "bodyModel": "PatchClusterLibraryDetails",
       "bodyFields": [
         {
-          "name": "operation",
-          "type": "string, required",
-          "description": ""
-        },
-        {
-          "name": "type",
-          "type": "string, optional",
+          "name": "items",
+          "type": "array, required",
           "description": ""
         }
       ],
@@ -3567,7 +3732,7 @@
       "anchor": "cluster-restart",
       "summary": "Restarts a running cluster.",
       "usage": "aidp cluster restart <AI-DATA-PLATFORM-ID> <WORKSPACE-KEY> <CLUSTER-KEY> --body <JSON>",
-      "bodyModel": "",
+      "bodyModel": "RestartClusterDetails",
       "bodyFields": [],
       "markdown": "#### `aidp cluster restart`\n<a id=\"cluster-restart\"></a>\nRestarts a running cluster.\n\n**Usage:**\n\n`aidp cluster restart <AI-DATA-PLATFORM-ID> <WORKSPACE-KEY> <CLUSTER-KEY> --body <JSON>`\n\n**Path Arguments:**\n- `ai-data-platform-id` (string, required) — The OCID of the AI Data Platform (Data Lake) instance.\n- `workspace-key` (string, required) — The key of the Workspace\n- `cluster-key` (string, required) — Cluster key.\n**Options:**\n- `if-match` (string, optional) — For optimistic concurrency control. In the PUT or DELETE call for a resource, set the if-match parameter to the value of the etag from a previous GET or POST response for that resource. The resource will be updated or deleted only if the etag you provide matches the resource's current etag value.\n- `opc-retry-token` (string, optional) — A token that uniquely identifies a request so it can be retried in case of a timeout or server error without risk of running that same action again. Retry tokens expire after 24 hours, but can be invalidated before then due to conflicting operations. For example, if a resource has been deleted and removed from the system, then a retry of the original creation request might be rejected.\n- `opc-request-id` (string, optional) — Unique Oracle-assigned identifier for the request. If you need to contact Oracle about a particular request, please provide the request ID. The only valid characters for request IDs are letters, numbers, underscore, and dash.\n---\n**Return:** [Back to Cluster](#cluster) • [Top](#top)"
     },
@@ -3661,7 +3826,7 @@
       "anchor": "cluster-start",
       "summary": "Starts a cluster that has halted operation.",
       "usage": "aidp cluster start <AI-DATA-PLATFORM-ID> <WORKSPACE-KEY> <CLUSTER-KEY> --body <JSON>",
-      "bodyModel": "",
+      "bodyModel": "StartClusterDetails",
       "bodyFields": [],
       "markdown": "#### `aidp cluster start`\n<a id=\"cluster-start\"></a>\nStarts a cluster that has halted operation.\n\n**Usage:**\n\n`aidp cluster start <AI-DATA-PLATFORM-ID> <WORKSPACE-KEY> <CLUSTER-KEY> --body <JSON>`\n\n**Path Arguments:**\n- `ai-data-platform-id` (string, required) — The OCID of the AI Data Platform (Data Lake) instance.\n- `workspace-key` (string, required) — The key of the Workspace\n- `cluster-key` (string, required) — Cluster key.\n**Options:**\n- `if-match` (string, optional) — For optimistic concurrency control. In the PUT or DELETE call for a resource, set the if-match parameter to the value of the etag from a previous GET or POST response for that resource. The resource will be updated or deleted only if the etag you provide matches the resource's current etag value.\n- `opc-retry-token` (string, optional) — A token that uniquely identifies a request so it can be retried in case of a timeout or server error without risk of running that same action again. Retry tokens expire after 24 hours, but can be invalidated before then due to conflicting operations. For example, if a resource has been deleted and removed from the system, then a retry of the original creation request might be rejected.\n- `opc-request-id` (string, optional) — Unique Oracle-assigned identifier for the request. If you need to contact Oracle about a particular request, please provide the request ID. The only valid characters for request IDs are letters, numbers, underscore, and dash.\n---\n**Return:** [Back to Cluster](#cluster) • [Top](#top)"
     },
@@ -3672,7 +3837,7 @@
       "anchor": "cluster-stop",
       "summary": "Stops an active cluster.",
       "usage": "aidp cluster stop <AI-DATA-PLATFORM-ID> <WORKSPACE-KEY> <CLUSTER-KEY> --body <JSON>",
-      "bodyModel": "",
+      "bodyModel": "StopClusterDetails",
       "bodyFields": [],
       "markdown": "#### `aidp cluster stop`\n<a id=\"cluster-stop\"></a>\nStops an active cluster.\n\n**Usage:**\n\n`aidp cluster stop <AI-DATA-PLATFORM-ID> <WORKSPACE-KEY> <CLUSTER-KEY> --body <JSON>`\n\n**Path Arguments:**\n- `ai-data-platform-id` (string, required) — The OCID of the AI Data Platform (Data Lake) instance.\n- `workspace-key` (string, required) — The key of the Workspace\n- `cluster-key` (string, required) — Cluster key.\n**Options:**\n- `if-match` (string, optional) — For optimistic concurrency control. In the PUT or DELETE call for a resource, set the if-match parameter to the value of the etag from a previous GET or POST response for that resource. The resource will be updated or deleted only if the etag you provide matches the resource's current etag value.\n- `opc-retry-token` (string, optional) — A token that uniquely identifies a request so it can be retried in case of a timeout or server error without risk of running that same action again. Retry tokens expire after 24 hours, but can be invalidated before then due to conflicting operations. For example, if a resource has been deleted and removed from the system, then a retry of the original creation request might be rejected.\n- `opc-request-id` (string, optional) — Unique Oracle-assigned identifier for the request. If you need to contact Oracle about a particular request, please provide the request ID. The only valid characters for request IDs are letters, numbers, underscore, and dash.\n---\n**Return:** [Back to Cluster](#cluster) • [Top](#top)"
     },
@@ -3730,16 +3895,31 @@
       "anchor": "cluster-update",
       "summary": "Update the details of a given cluster.",
       "usage": "aidp cluster update <AI-DATA-PLATFORM-ID> <WORKSPACE-KEY> <CLUSTER-KEY> --body <JSON>",
-      "bodyModel": "ClusterRuntimeConfig",
+      "bodyModel": "UpdateClusterDetails",
       "bodyFields": [
         {
-          "name": "initScripts",
-          "type": "array, optional",
+          "name": "description",
+          "type": "string, optional",
+          "description": ""
+        },
+        {
+          "name": "displayName",
+          "type": "string, optional",
+          "description": ""
+        },
+        {
+          "name": "driverConfig",
+          "type": "object, optional",
+          "description": ""
+        },
+        {
+          "name": "nodeType",
+          "type": "string, optional",
           "description": ""
         },
         {
           "name": "type",
-          "type": "string, optional",
+          "type": "string, required",
           "description": ""
         }
       ],
@@ -3817,11 +3997,26 @@
       "anchor": "credentials-update",
       "summary": "Updates a credential object. Updates a credential object. The operation completes synchronously; callers can invoke get to confirm the latest state.",
       "usage": "aidp credentials update <AI-DATA-PLATFORM-ID> <CREDENTIAL-KEY> --body <JSON>",
-      "bodyModel": "CredentialDetails",
+      "bodyModel": "UpdateDataLakeCredentialDetails",
       "bodyFields": [
         {
-          "name": "credentialType",
-          "type": "string, required",
+          "name": "credentialDescription",
+          "type": "string, optional",
+          "description": ""
+        },
+        {
+          "name": "credentialDetails",
+          "type": "object, optional",
+          "description": ""
+        },
+        {
+          "name": "displayName",
+          "type": "string, optional",
+          "description": ""
+        },
+        {
+          "name": "type",
+          "type": "string, optional",
           "description": ""
         }
       ],
@@ -4137,16 +4332,16 @@
       "anchor": "delta-share-manage-permission",
       "summary": "Updates permissions on a Delta Share.",
       "usage": "aidp delta-share manage-permission <AI-DATA-PLATFORM-ID> <SHARE-KEY> --body <JSON>",
-      "bodyModel": "AssignSharePermissionDetails",
+      "bodyModel": "ManageSharePermissionDetails",
       "bodyFields": [
         {
-          "name": "assignees",
-          "type": "object, required",
+          "name": "assignSharePermissionDetails",
+          "type": "object, optional",
           "description": ""
         },
         {
-          "name": "permissions",
-          "type": "array, required",
+          "name": "revokeSharePermissionDetails",
+          "type": "object, optional",
           "description": ""
         }
       ],
@@ -4159,16 +4354,16 @@
       "anchor": "delta-share-manage-recipient-permission",
       "summary": "Updates the permissions of a Delta Share recipient.",
       "usage": "aidp delta-share manage-recipient-permission <AI-DATA-PLATFORM-ID> <RECIPIENT-KEY> --body <JSON>",
-      "bodyModel": "AssignRecipientPermissionDetails",
+      "bodyModel": "ManageRecipientPermissionDetails",
       "bodyFields": [
         {
-          "name": "assignees",
-          "type": "object, required",
+          "name": "assignRecipientPermissionDetails",
+          "type": "object, optional",
           "description": ""
         },
         {
-          "name": "permissions",
-          "type": "array, required",
+          "name": "revokeRecipientPermissionDetails",
+          "type": "object, optional",
           "description": ""
         }
       ],
@@ -4806,26 +5001,26 @@
       "anchor": "mlops-log-experiment-run-batch",
       "summary": "(Preview) Logs an experiment run batch.",
       "usage": "aidp mlops log-experiment-run-batch <AI-DATA-PLATFORM-ID> <WORKSPACE-KEY> --body <JSON>",
-      "bodyModel": "ExperimentRunMetric",
+      "bodyModel": "LogExperimentRunBatchDetails",
       "bodyFields": [
         {
-          "name": "key",
-          "type": "string, optional",
+          "name": "metrics",
+          "type": "array, optional",
           "description": ""
         },
         {
-          "name": "step",
-          "type": "integer, optional",
+          "name": "params",
+          "type": "array, optional",
           "description": ""
         },
         {
-          "name": "timestamp",
-          "type": "integer, optional",
+          "name": "run_id",
+          "type": "string, required",
           "description": ""
         },
         {
-          "name": "value",
-          "type": "number, optional",
+          "name": "tags",
+          "type": "array, optional",
           "description": ""
         }
       ],
@@ -4838,35 +5033,15 @@
       "anchor": "mlops-log-experiment-run-inputs",
       "summary": "(Preview) Logs experiment run inputs.",
       "usage": "aidp mlops log-experiment-run-inputs <AI-DATA-PLATFORM-ID> <WORKSPACE-KEY> --body <JSON>",
-      "bodyModel": "Dataset",
+      "bodyModel": "LogExperimentRunInputsDetails",
       "bodyFields": [
         {
-          "name": "digest",
-          "type": "string, required",
+          "name": "dataset_inputs",
+          "type": "array, optional",
           "description": ""
         },
         {
-          "name": "name",
-          "type": "string, required",
-          "description": ""
-        },
-        {
-          "name": "profile",
-          "type": "string, optional",
-          "description": ""
-        },
-        {
-          "name": "schema",
-          "type": "string, optional",
-          "description": ""
-        },
-        {
-          "name": "source",
-          "type": "string, required",
-          "description": ""
-        },
-        {
-          "name": "source_type",
+          "name": "run_id",
           "type": "string, required",
           "description": ""
         }
@@ -5221,16 +5396,21 @@
       "anchor": "mlops-update-experiment-run-tags",
       "summary": "(Preview) Updates tags on an experiment run.",
       "usage": "aidp mlops update-experiment-run-tags <AI-DATA-PLATFORM-ID> <WORKSPACE-KEY> --body <JSON>",
-      "bodyModel": "ExperimentRunTag",
+      "bodyModel": "UpdateExperimentRunTagsDetails",
       "bodyFields": [
         {
-          "name": "key",
-          "type": "string, optional",
+          "name": "delete_tags",
+          "type": "array, optional",
           "description": ""
         },
         {
-          "name": "value",
-          "type": "string, optional",
+          "name": "run_id",
+          "type": "string, required",
+          "description": ""
+        },
+        {
+          "name": "set_tags",
+          "type": "array, optional",
           "description": ""
         }
       ],
@@ -5243,16 +5423,21 @@
       "anchor": "mlops-update-experiment-tags",
       "summary": "(Preview) Updates tags on experiment.",
       "usage": "aidp mlops update-experiment-tags <AI-DATA-PLATFORM-ID> <WORKSPACE-KEY> --body <JSON>",
-      "bodyModel": "ExperimentTag",
+      "bodyModel": "UpdateExperimentTagsDetails",
       "bodyFields": [
         {
-          "name": "key",
+          "name": "delete_tags",
+          "type": "array, optional",
+          "description": ""
+        },
+        {
+          "name": "experiment_id",
           "type": "string, required",
           "description": ""
         },
         {
-          "name": "value",
-          "type": "string, optional",
+          "name": "set_tags",
+          "type": "array, optional",
           "description": ""
         }
       ],
@@ -5292,16 +5477,26 @@
       "anchor": "mlops-update-model-version-tags",
       "summary": "(Preview) Updates tags on a model version.",
       "usage": "aidp mlops update-model-version-tags <AI-DATA-PLATFORM-ID> --body <JSON>",
-      "bodyModel": "ModelVersionTag",
+      "bodyModel": "UpdateModelVersionTagsDetails",
       "bodyFields": [
         {
-          "name": "key",
-          "type": "string, optional",
+          "name": "delete_tags",
+          "type": "array, optional",
           "description": ""
         },
         {
-          "name": "value",
-          "type": "string, optional",
+          "name": "name",
+          "type": "string, required",
+          "description": ""
+        },
+        {
+          "name": "set_tags",
+          "type": "array, optional",
+          "description": ""
+        },
+        {
+          "name": "version",
+          "type": "string, required",
           "description": ""
         }
       ],
@@ -5341,16 +5536,21 @@
       "anchor": "mlops-update-registered-model-tags",
       "summary": "(Preview) Updates tags on a registered model.",
       "usage": "aidp mlops update-registered-model-tags <AI-DATA-PLATFORM-ID> --body <JSON>",
-      "bodyModel": "RegisteredModelTag",
+      "bodyModel": "UpdateRegisteredModelTagsDetails",
       "bodyFields": [
         {
-          "name": "key",
-          "type": "string, optional",
+          "name": "delete_tags",
+          "type": "array, optional",
           "description": ""
         },
         {
-          "name": "value",
-          "type": "string, optional",
+          "name": "name",
+          "type": "string, required",
+          "description": ""
+        },
+        {
+          "name": "set_tags",
+          "type": "array, optional",
           "description": ""
         }
       ],
@@ -5526,15 +5726,10 @@
       "anchor": "notebook-patch-session",
       "summary": "Patches a session with a given ID with the provided details. Patches a session with a given ID with the provided details. You can use this to rename a session.",
       "usage": "aidp notebook patch-session <AI-DATA-PLATFORM-ID> <WORKSPACE-KEY> <SESSION-ID> --body <JSON>",
-      "bodyModel": "Kernel",
+      "bodyModel": "PatchSessionDetails",
       "bodyFields": [
         {
-          "name": "connections",
-          "type": "integer, optional",
-          "description": ""
-        },
-        {
-          "name": "execution_state",
+          "name": "cluster_id",
           "type": "string, optional",
           "description": ""
         },
@@ -5544,12 +5739,27 @@
           "description": ""
         },
         {
-          "name": "last_activity",
-          "type": "string, optional",
+          "name": "kernel",
+          "type": "object, optional",
+          "description": ""
+        },
+        {
+          "name": "must_refresh_context",
+          "type": "boolean, optional",
           "description": ""
         },
         {
           "name": "name",
+          "type": "string, optional",
+          "description": ""
+        },
+        {
+          "name": "path",
+          "type": "string, optional",
+          "description": ""
+        },
+        {
+          "name": "type",
           "type": "string, optional",
           "description": ""
         }
@@ -6007,16 +6217,26 @@
       "anchor": "schema-infer",
       "summary": "Returns details of a table schema from the specified location.",
       "usage": "aidp schema infer <AI-DATA-PLATFORM-ID> <SCHEMA-KEY> --body <JSON>",
-      "bodyModel": "InferSchemaProperties",
+      "bodyModel": "PerformInferSchemaDetails",
       "bodyFields": [
         {
-          "name": "propertyName",
-          "type": "string, optional",
+          "name": "dataFormat",
+          "type": "string, required",
           "description": ""
         },
         {
-          "name": "propertyValue",
-          "type": "string, optional",
+          "name": "inferSchemaProperties",
+          "type": "array, optional",
+          "description": ""
+        },
+        {
+          "name": "location",
+          "type": "string, required",
+          "description": ""
+        },
+        {
+          "name": "numberOfPartitions",
+          "type": "integer, optional",
           "description": ""
         }
       ],
@@ -6029,16 +6249,26 @@
       "anchor": "schema-infer-with-preview",
       "summary": "Returns table schema and data from the specified location.",
       "usage": "aidp schema infer-with-preview <AI-DATA-PLATFORM-ID> <SCHEMA-KEY> --body <JSON>",
-      "bodyModel": "InferSchemaProperties",
+      "bodyModel": "PerformInferSchemaDetails",
       "bodyFields": [
         {
-          "name": "propertyName",
-          "type": "string, optional",
+          "name": "dataFormat",
+          "type": "string, required",
           "description": ""
         },
         {
-          "name": "propertyValue",
-          "type": "string, optional",
+          "name": "inferSchemaProperties",
+          "type": "array, optional",
+          "description": ""
+        },
+        {
+          "name": "location",
+          "type": "string, required",
+          "description": ""
+        },
+        {
+          "name": "numberOfPartitions",
+          "type": "integer, optional",
           "description": ""
         }
       ],
@@ -6117,16 +6347,16 @@
       "anchor": "schema-manage-permission",
       "summary": "Updates the permissions for a given schema.",
       "usage": "aidp schema manage-permission <AI-DATA-PLATFORM-ID> <SCHEMA-KEY> --body <JSON>",
-      "bodyModel": "AssignSchemaPermissionDetails",
+      "bodyModel": "ManageSchemaPermissionDetails",
       "bodyFields": [
         {
-          "name": "assignees",
-          "type": "object, required",
+          "name": "assignSchemaPermissionDetails",
+          "type": "object, optional",
           "description": ""
         },
         {
-          "name": "permissions",
-          "type": "array, required",
+          "name": "revokeSchemaPermissionDetails",
+          "type": "object, optional",
           "description": ""
         }
       ],
@@ -6139,36 +6369,16 @@
       "anchor": "schema-manage-table-permission",
       "summary": "Updates the permissions for a given table.",
       "usage": "aidp schema manage-table-permission <AI-DATA-PLATFORM-ID> <TABLE-KEY> --body <JSON>",
-      "bodyModel": "AssignTablePermissionDetails",
+      "bodyModel": "ManageTablePermissionDetails",
       "bodyFields": [
         {
-          "name": "assignees",
-          "type": "object, required",
+          "name": "assignTablePermissionDetails",
+          "type": "object, optional",
           "description": ""
         },
         {
-          "name": "excludeColumns",
-          "type": "array, required",
-          "description": ""
-        },
-        {
-          "name": "includeColumns",
-          "type": "array, required",
-          "description": ""
-        },
-        {
-          "name": "permissions",
-          "type": "array, required",
-          "description": ""
-        },
-        {
-          "name": "rowFilter",
-          "type": "string, optional",
-          "description": ""
-        },
-        {
-          "name": "rowFilterType",
-          "type": "string, optional",
+          "name": "revokeTablePermissionDetails",
+          "type": "object, optional",
           "description": ""
         }
       ],
@@ -6181,26 +6391,16 @@
       "anchor": "schema-manage-view-permission",
       "summary": "Updates permissions on a view.",
       "usage": "aidp schema manage-view-permission <AI-DATA-PLATFORM-ID> <VIEW-KEY> --body <JSON>",
-      "bodyModel": "AssignViewPermissionDetails",
+      "bodyModel": "ManageViewPermissionDetails",
       "bodyFields": [
         {
-          "name": "assignees",
-          "type": "object, required",
+          "name": "assignViewPermissionDetails",
+          "type": "object, optional",
           "description": ""
         },
         {
-          "name": "excludeColumns",
-          "type": "array, required",
-          "description": ""
-        },
-        {
-          "name": "includeColumns",
-          "type": "array, required",
-          "description": ""
-        },
-        {
-          "name": "permissions",
-          "type": "array, required",
+          "name": "revokeViewPermissionDetails",
+          "type": "object, optional",
           "description": ""
         }
       ],
@@ -6273,16 +6473,46 @@
       "anchor": "schema-update-table",
       "summary": "Updates a table with provided details.",
       "usage": "aidp schema update-table <AI-DATA-PLATFORM-ID> <TABLE-KEY> --body <JSON>",
-      "bodyModel": "RenameTableFieldDetails",
+      "bodyModel": "UpdateTableDetails",
       "bodyFields": [
         {
-          "name": "fieldName",
-          "type": "string, required",
+          "name": "addTableFields",
+          "type": "array, optional",
           "description": ""
         },
         {
-          "name": "updatedFieldName",
-          "type": "string, required",
+          "name": "addTableProperties",
+          "type": "array, optional",
+          "description": ""
+        },
+        {
+          "name": "description",
+          "type": "string, optional",
+          "description": ""
+        },
+        {
+          "name": "displayName",
+          "type": "string, optional",
+          "description": ""
+        },
+        {
+          "name": "dropTableFields",
+          "type": "array, optional",
+          "description": ""
+        },
+        {
+          "name": "dropTableProperties",
+          "type": "array, optional",
+          "description": ""
+        },
+        {
+          "name": "renameTableFields",
+          "type": "array, optional",
+          "description": ""
+        },
+        {
+          "name": "updateTableFields",
+          "type": "array, optional",
           "description": ""
         }
       ],
@@ -6377,31 +6607,21 @@
       "anchor": "user-setting-update",
       "summary": "(Preview) Updates the metadata or payload of an existing user setting, letting you rotate credentials or change defaults.",
       "usage": "aidp user-setting update <AI-DATA-PLATFORM-ID> <SETTING-KEY> --body <JSON>",
-      "bodyModel": "GitAccountUserSetting",
+      "bodyModel": "UpdateUserSettingDetails",
       "bodyFields": [
         {
-          "name": "entityType",
+          "name": "data",
+          "type": "object, required",
+          "description": ""
+        },
+        {
+          "name": "isDefault",
+          "type": "boolean, required",
+          "description": ""
+        },
+        {
+          "name": "name",
           "type": "string, required",
-          "description": ""
-        },
-        {
-          "name": "personalAccessToken",
-          "type": "string, optional",
-          "description": ""
-        },
-        {
-          "name": "providerName",
-          "type": "string, required",
-          "description": ""
-        },
-        {
-          "name": "type",
-          "type": "string, optional",
-          "description": ""
-        },
-        {
-          "name": "username",
-          "type": "string, optional",
           "description": ""
         }
       ],
@@ -6566,16 +6786,16 @@
       "anchor": "volume-manage-permission",
       "summary": "Updates the permissions on a volume.",
       "usage": "aidp volume manage-permission <AI-DATA-PLATFORM-ID> <VOLUME-KEY> --body <JSON>",
-      "bodyModel": "AssignVolumePermissionDetails",
+      "bodyModel": "ManageVolumePermissionDetails",
       "bodyFields": [
         {
-          "name": "assignees",
-          "type": "object, required",
+          "name": "assignVolumePermissionDetails",
+          "type": "object, optional",
           "description": ""
         },
         {
-          "name": "permissions",
-          "type": "array, required",
+          "name": "revokeVolumePermissionDetails",
+          "type": "object, optional",
           "description": ""
         }
       ],
@@ -6756,15 +6976,70 @@
       "anchor": "workflow-create-job",
       "summary": "Creates a job.",
       "usage": "aidp workflow create-job <AI-DATA-PLATFORM-ID> <WORKSPACE-KEY> --body <JSON>",
-      "bodyModel": "AutoScale",
+      "bodyModel": "CreateJobDetails",
       "bodyFields": [
         {
-          "name": "maxWorkers",
+          "name": "continuous",
+          "type": "object, optional",
+          "description": ""
+        },
+        {
+          "name": "description",
+          "type": "string, optional",
+          "description": ""
+        },
+        {
+          "name": "gitConfig",
+          "type": "object, optional",
+          "description": ""
+        },
+        {
+          "name": "jobClusters",
+          "type": "array, optional",
+          "description": ""
+        },
+        {
+          "name": "maxConcurrentRuns",
           "type": "integer, optional",
           "description": ""
         },
         {
-          "name": "minWorkers",
+          "name": "name",
+          "type": "string, required",
+          "description": ""
+        },
+        {
+          "name": "parameters",
+          "type": "array, optional",
+          "description": ""
+        },
+        {
+          "name": "path",
+          "type": "string, optional",
+          "description": ""
+        },
+        {
+          "name": "queue",
+          "type": "object, optional",
+          "description": ""
+        },
+        {
+          "name": "runAs",
+          "type": "string, optional",
+          "description": ""
+        },
+        {
+          "name": "schedule",
+          "type": "object, optional",
+          "description": ""
+        },
+        {
+          "name": "tasks",
+          "type": "array, optional",
+          "description": ""
+        },
+        {
+          "name": "timeoutSeconds",
           "type": "integer, optional",
           "description": ""
         }
@@ -6980,16 +7255,16 @@
       "anchor": "workflow-manage-job-permission",
       "summary": "Update job permissions with the provided details.",
       "usage": "aidp workflow manage-job-permission <AI-DATA-PLATFORM-ID> <WORKSPACE-KEY> <JOB-KEY> --body <JSON>",
-      "bodyModel": "AssignJobPermissionDetails",
+      "bodyModel": "ManageJobPermissionDetails",
       "bodyFields": [
         {
-          "name": "assignees",
-          "type": "object, required",
+          "name": "assignJobPermissionDetails",
+          "type": "object, optional",
           "description": ""
         },
         {
-          "name": "permissions",
-          "type": "array, required",
+          "name": "revokeJobPermissionDetails",
+          "type": "object, optional",
           "description": ""
         }
       ],
@@ -7002,16 +7277,26 @@
       "anchor": "workflow-repair-job-run",
       "summary": "Repairs and reruns a job run.",
       "usage": "aidp workflow repair-job-run <AI-DATA-PLATFORM-ID> <WORKSPACE-KEY> <JOB-RUN-KEY> --body <JSON>",
-      "bodyModel": "Parameter",
+      "bodyModel": "RepairJobRunDetails",
       "bodyFields": [
         {
-          "name": "name",
-          "type": "string, required",
+          "name": "parameters",
+          "type": "array, optional",
           "description": ""
         },
         {
-          "name": "value",
+          "name": "repairMode",
           "type": "string, optional",
+          "description": ""
+        },
+        {
+          "name": "repairTasks",
+          "type": "array, optional",
+          "description": ""
+        },
+        {
+          "name": "taskKeys",
+          "type": "array, optional",
           "description": ""
         }
       ],
@@ -7024,15 +7309,70 @@
       "anchor": "workflow-update-job",
       "summary": "Updates details for a job.",
       "usage": "aidp workflow update-job <AI-DATA-PLATFORM-ID> <WORKSPACE-KEY> <JOB-KEY> --body <JSON>",
-      "bodyModel": "AutoScale",
+      "bodyModel": "UpdateJobDetails",
       "bodyFields": [
         {
-          "name": "maxWorkers",
+          "name": "continuous",
+          "type": "object, optional",
+          "description": ""
+        },
+        {
+          "name": "description",
+          "type": "string, optional",
+          "description": ""
+        },
+        {
+          "name": "gitConfig",
+          "type": "object, optional",
+          "description": ""
+        },
+        {
+          "name": "jobClusters",
+          "type": "array, optional",
+          "description": ""
+        },
+        {
+          "name": "maxConcurrentRuns",
           "type": "integer, optional",
           "description": ""
         },
         {
-          "name": "minWorkers",
+          "name": "name",
+          "type": "string, required",
+          "description": ""
+        },
+        {
+          "name": "parameters",
+          "type": "array, optional",
+          "description": ""
+        },
+        {
+          "name": "path",
+          "type": "string, optional",
+          "description": ""
+        },
+        {
+          "name": "queue",
+          "type": "object, optional",
+          "description": ""
+        },
+        {
+          "name": "runAs",
+          "type": "string, optional",
+          "description": ""
+        },
+        {
+          "name": "schedule",
+          "type": "object, optional",
+          "description": ""
+        },
+        {
+          "name": "tasks",
+          "type": "array, optional",
+          "description": ""
+        },
+        {
+          "name": "timeoutSeconds",
           "type": "integer, optional",
           "description": ""
         }
@@ -7175,11 +7515,16 @@
       "anchor": "workspace-manage-create-permission",
       "summary": "Updates create workspace permissions on a workspace.",
       "usage": "aidp workspace manage-create-permission <AI-DATA-PLATFORM-ID> --body <JSON>",
-      "bodyModel": "AssignCreateWorkspacePermissionDetails",
+      "bodyModel": "ManageCreateWorkspacePermissionDetails",
       "bodyFields": [
         {
-          "name": "assignees",
-          "type": "object, required",
+          "name": "assignCreateWorkspacePermissionDetails",
+          "type": "object, optional",
+          "description": ""
+        },
+        {
+          "name": "revokeCreateWorkspacePermissionDetails",
+          "type": "object, optional",
           "description": ""
         }
       ],
@@ -7192,16 +7537,16 @@
       "anchor": "workspace-manage-permission",
       "summary": "Updates permissions on a workspace.",
       "usage": "aidp workspace manage-permission <AI-DATA-PLATFORM-ID> <WORKSPACE-KEY> --body <JSON>",
-      "bodyModel": "AssignWorkspacePermissionDetails",
+      "bodyModel": "ManageWorkspacePermissionDetails",
       "bodyFields": [
         {
-          "name": "assignees",
-          "type": "object, required",
+          "name": "assignWorkspacePermissionDetails",
+          "type": "object, optional",
           "description": ""
         },
         {
-          "name": "permissions",
-          "type": "array, required",
+          "name": "revokeWorkspacePermissionDetails",
+          "type": "object, optional",
           "description": ""
         }
       ],
@@ -7214,16 +7559,26 @@
       "anchor": "workspace-update",
       "summary": "Updates the details of a workspace.",
       "usage": "aidp workspace update <AI-DATA-PLATFORM-ID> <WORKSPACE-KEY> --body <JSON>",
-      "bodyModel": "Scan",
+      "bodyModel": "UpdateWorkspaceDetails",
       "bodyFields": [
         {
-          "name": "fqdn",
+          "name": "defaultCatalogKey",
           "type": "string, optional",
           "description": ""
         },
         {
-          "name": "port",
+          "name": "description",
           "type": "string, optional",
+          "description": ""
+        },
+        {
+          "name": "displayName",
+          "type": "string, optional",
+          "description": ""
+        },
+        {
+          "name": "networkConfigurationDetails",
+          "type": "object, optional",
           "description": ""
         }
       ],
@@ -7387,21 +7742,16 @@
       "anchor": "workspace-object-manage-permission",
       "summary": "Updates permissions on a workspace object.",
       "usage": "aidp workspace-object manage-permission <AI-DATA-PLATFORM-ID> <WORKSPACE-KEY> <OBJECT-KEY> --body <JSON>",
-      "bodyModel": "AssignWorkspaceObjectPermissionDetails",
+      "bodyModel": "ManageWorkspaceObjectPermissionDetails",
       "bodyFields": [
         {
-          "name": "assignees",
-          "type": "object, required",
+          "name": "assignWorkspaceObjectPermissionDetails",
+          "type": "object, optional",
           "description": ""
         },
         {
-          "name": "isPermissionsInheritable",
-          "type": "boolean, optional",
-          "description": ""
-        },
-        {
-          "name": "permissions",
-          "type": "array, required",
+          "name": "revokeWorkspaceObjectPermissionDetails",
+          "type": "object, optional",
           "description": ""
         }
       ],
